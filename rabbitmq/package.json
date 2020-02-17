@@ -5,11 +5,14 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "basic": "node basic/send & node basic/receive"
+    "basic": "concurrently \"node basic/receive\" \"node basic/send\"",
+    "work_queue_consumer": "concurrently \"node work_queue/worker.js\" \"node work_queue/worker.js\"",
+    "work_queue_producer": "concurrently \"node work_queue/new_task\" \"node work_queue/new_task\" \"node work_queue/new_task\" \"node work_queue/new_task\" \"node work_queue/new_task\""
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "amqplib": "^0.5.5"
+    "amqplib": "^0.5.5",
+    "concurrently": "^5.1.0"
   }
 }
