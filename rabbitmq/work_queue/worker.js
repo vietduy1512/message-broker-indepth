@@ -17,9 +17,10 @@ amqp.connect('amqp://localhost', function(error, connection) {
             console.log(" [x] Received %s", msg.content.toString());
             setTimeout(function() {
                 console.log(" [x] Done");
+                channel.ack(msg);
             }, secs * 1000);
         }, {
-            noAck: true
+            noAck: false
         });
     });
 });
