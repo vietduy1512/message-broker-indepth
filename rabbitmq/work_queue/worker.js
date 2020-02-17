@@ -7,7 +7,7 @@ amqp.connect('amqp://localhost', function(error, connection) {
         var queue = 'task_queue';
 
         channel.assertQueue(queue, {
-            durable: true
+            durable: true // Message durability
         });
         
         console.log(" [*] Waiting for messages in %s. To exit press CTRL+C", queue);
